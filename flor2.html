@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flor animada 🌺</title>
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle, #000, #1a001a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: Arial;
+    color: white;
+    overflow: hidden;
+}
+
+.flor {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    animation: aparecer 2s ease-out;
+}
+
+.petalo {
+    position: absolute;
+    width: 90px;
+    height: 140px;
+    background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+    border-radius: 50%;
+    top: 55px;
+    left: 80px;
+    transform-origin: bottom center;
+    opacity: 0.95;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.centro {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: gold;
+    border-radius: 50%;
+    top: 105px;
+    left: 105px;
+    box-shadow: 0 0 20px gold;
+}
+
+.texto {
+    margin-top: 30px;
+    font-size: 20px;
+    animation: brillo 3s infinite alternate;
+}
+
+@keyframes brillo {
+    from { opacity: 0.6; }
+    to   { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="flor">
+    <div class="petalo" style="transform: rotate(0deg)"></div>
+    <div class="petalo" style="transform: rotate(45deg)"></div>
+    <div class="petalo" style="transform: rotate(90deg)"></div>
+    <div class="petalo" style="transform: rotate(135deg)"></div>
+    <div class="petalo" style="transform: rotate(180deg)"></div>
+    <div class="petalo" style="transform: rotate(225deg)"></div>
+    <div class="petalo" style="transform: rotate(270deg)"></div>
+    <div class="petalo" style="transform: rotate(315deg)"></div>
+    <div class="centro"></div>
+</div>
+
+<div class="texto">Hecha con cariño 🌸</div>
+
+</body>
+</html>
