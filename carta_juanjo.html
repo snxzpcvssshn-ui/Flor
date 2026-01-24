@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Juanjo 💞</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #2b003f, #000);
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+    color: #ffe6f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Carta */
+.carta {
+    position: relative;
+    background: rgba(0,0,0,0.55);
+    padding: 45px;
+    max-width: 620px;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(255,105,180,0.35);
+    font-size: 20px;
+    line-height: 1.7;
+    z-index: 3;
+}
+
+/* Texto */
+#texto {
+    white-space: pre-wrap;
+}
+
+/* Corazones en bordes */
+.corazon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: latir 2.5s ease-in-out infinite;
+}
+
+.corazon::before,
+.corazon::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.corazon::before {
+    top: -9px;
+    left: 0;
+}
+
+.corazon::after {
+    left: -9px;
+    top: 0;
+}
+
+@keyframes latir {
+    0%,100% { transform: rotate(45deg) scale(1); opacity: 0.8; }
+    50% { transform: rotate(45deg) scale(1.3); opacity: 1; }
+}
+
+/* Pétalos */
+.petalo {
+    position: absolute;
+    width: 16px;
+    height: 26px;
+    background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    from {
+        transform: translateY(-40px) rotate(0deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* Brillos */
+.luz {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    animation: brillar 3s ease-in-out infinite;
+}
+
+@keyframes brillar {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+    <div id="texto"></div>
+</div>
+
+<script>
+/* TEXTO DE LA CARTA */
+const carta = `
+Juanjo,
+
+Amo tus ojos color café,
+tu cabello,
+tus manos,
+tus marcas en tu cuerpo,
+las cuales cuentan y tienen historia.
+
+Te amo con una intensidad muy grande.
+Si tan solo pudiera explicarlo,
+pero me es imposible hacerlo,
+por eso desearía poder demostrarlo.
+
+Ojalá y Dios nos dejara estar juntos :c
+De verdad que no perdería
+ni un solo segundo al estar contigo,
+porque te amo de una manera
+que con palabras es imposible explicar.
+
+De verdad te amo un montón 💞
+`;
+
+/* Escritura */
+let i = 0;
+const velocidad = 65;
+const contenedor = document.getElementById("texto");
+
+function escribir() {
+    if (i < carta.length) {
+        contenedor.textContent += carta.charAt(i);
+        i++;
+        setTimeout(escribir, velocidad);
+    }
+}
+escribir();
+
+/* Corazones en los bordes */
+for (let i = 0; i < 14; i++) {
+    const c1 = document.createElement("div");
+    c1.className = "corazon";
+    c1.style.left = "-25px";
+    c1.style.top = (i * 7 + 5) + "%";
+    document.querySelector(".carta").appendChild(c1);
+
+    const c2 = c1.cloneNode(true);
+    c2.style.left = "100%";
+    document.querySelector(".carta").appendChild(c2);
+}
+
+/* Pétalos */
+for (let i = 0; i < 60; i++) {
+    const p = document.createElement("div");
+    p.className = "petalo";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (6 + Math.random() * 6) + "s";
+    p.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(p);
+}
+
+/* Brillos */
+for (let i = 0; i < 20; i++) {
+    const l = document.createElement("div");
+    l.className = "luz";
+    l.style.left = Math.random() * 100 + "vw";
+    l.style.top = Math.random() * 100 + "vh";
+    l.style.animationDelay = Math.random() * 3 + "s";
+    document.body.appendChild(l);
+}
+</script>
+
+</body>
+</html>
