@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Una flor para ti 🌸</title>
+<style>
+    body {
+        margin: 0;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        color: white;
+        font-family: Arial;
+    }
+
+    .flor {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        animation: girar 12s linear infinite;
+    }
+
+    .petalo {
+        width: 80px;
+        height: 120px;
+        background: pink;
+        border-radius: 50%;
+        position: absolute;
+        top: 40px;
+        left: 60px;
+        transform-origin: bottom center;
+        opacity: 0.9;
+    }
+
+    @keyframes girar {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
+</head>
+
+<body>
+    <div class="flor">
+        <div class="petalo" style="transform: rotate(0deg)"></div>
+        <div class="petalo" style="transform: rotate(45deg)"></div>
+        <div class="petalo" style="transform: rotate(90deg)"></div>
+        <div class="petalo" style="transform: rotate(135deg)"></div>
+        <div class="petalo" style="transform: rotate(180deg)"></div>
+        <div class="petalo" style="transform: rotate(225deg)"></div>
+        <div class="petalo" style="transform: rotate(270deg)"></div>
+        <div class="petalo" style="transform: rotate(315deg)"></div>
+    </div>
+
+    <h2>Para alguien especial 🌸</h2>
+</body>
+</html>
