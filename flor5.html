@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Siempre 🌸</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #2b0033, #000);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* ================= PETALOS ================= */
+.petalo {
+    position: absolute;
+    width: 18px;
+    height: 28px;
+    background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    from {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* ================= FLORES ================= */
+.flor {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    animation: flotar 6s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.petalo-flor {
+    position: absolute;
+    width: 65px;
+    height: 100px;
+    background: linear-gradient(180deg, #ffb3c6, #ffc8dd);
+    border-radius: 50%;
+    top: 30px;
+    left: 47px;
+    transform-origin: bottom center;
+}
+
+.centro {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: gold;
+    border-radius: 50%;
+    top: 66px;
+    left: 66px;
+    box-shadow: 0 0 20px gold;
+}
+
+/* ================= TEXTO ================= */
+.texto {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+#fase1 { bottom: 35%; }
+#fase2 { bottom: 30%; font-size: 26px; }
+#fase3 { bottom: 25%; font-size: 28px; }
+
+/* ================= CORAZONES ================= */
+.corazon {
+    position: absolute;
+    font-size: 20px;
+    color: pink;
+    animation: subir 2s ease-out forwards;
+}
+
+@keyframes subir {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-80px); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LLUVIA DE PETALOS -->
+<script>
+for (let i = 0; i < 80; i++) {
+    const p = document.createElement("div");
+    p.className = "petalo";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (6 + Math.random() * 6) + "s";
+    p.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(p);
+}
+</script>
+
+<!-- FLORES -->
+<script>
+for (let i = 0; i < 5; i++) {
+    const flor = document.createElement("div");
+    flor.className = "flor";
+    flor.style.top = (15 + i * 12) + "%";
+    flor.style.left = (10 + Math.random() * 70) + "%";
+
+    for (let j = 0; j < 6; j++) {
+        const p = document.createElement("div");
+        p.className = "petalo-flor";
+        p.style.transform = `rotate(${j * 60}deg)`;
+        flor.appendChild(p);
+    }
+
+    const c = document.createElement("div");
+    c.className = "centro";
+    flor.appendChild(c);
+
+    document.body.appendChild(flor);
+}
+</script>
+
+<!-- TEXTO POR FASES -->
+<div class="texto" id="fase1">Todo empezó como una idea 🌱</div>
+<div class="texto" id="fase2">Y sin darme cuenta… floreció 💖</div>
+<div class="texto" id="fase3">Te amo con toda mi alma y mi corazón 🌸</div>
+
+<script>
+setTimeout(() => document.getElementById("fase1").style.opacity = 1, 2000);
+setTimeout(() => document.getElementById("fase2").style.opacity = 1, 6000);
+setTimeout(() => document.getElementById("fase3").style.opacity = 1, 10000);
+</script>
+
+<!-- CORAZONES AL CLIC -->
+<script>
+document.addEventListener("click", e => {
+    const h = document.createElement("div");
+    h.className = "corazon";
+    h.textContent = "💖";
+    h.style.left = e.clientX + "px";
+    h.style.top = e.clientY + "px";
+    document.body.appendChild(h);
+
+    setTimeout(() => h.remove(), 2000);
+});
+</script>
+
+</body>
+</html>
