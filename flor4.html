@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Te amo 🌸</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #2b0033, #000);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+/* Lluvia de pétalos */
+.petalo-lluvia {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    from {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* Flores */
+.flor {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    animation: flotar 6s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.petalo {
+    position: absolute;
+    width: 70px;
+    height: 110px;
+    background: linear-gradient(180deg, #ffb3c6, #ffc8dd);
+    border-radius: 50%;
+    top: 35px;
+    left: 55px;
+    transform-origin: bottom center;
+}
+
+.centro {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: gold;
+    border-radius: 50%;
+    top: 75px;
+    left: 75px;
+    box-shadow: 0 0 20px gold;
+}
+
+/* Mensaje */
+.mensaje {
+    position: absolute;
+    bottom: 12%;
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.letra {
+    opacity: 0;
+    animation: aparecer 0.5s forwards;
+}
+
+@keyframes aparecer {
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Lluvia de pétalos -->
+<script>
+for (let i = 0; i < 60; i++) {
+    const p = document.createElement("div");
+    p.className = "petalo-lluvia";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (5 + Math.random() * 5) + "s";
+    p.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(p);
+}
+</script>
+
+<!-- Flores -->
+<div class="flor" style="top:20%; left:15%;">
+    <div class="petalo" style="transform:rotate(0deg)"></div>
+    <div class="petalo" style="transform:rotate(60deg)"></div>
+    <div class="petalo" style="transform:rotate(120deg)"></div>
+    <div class="petalo" style="transform:rotate(180deg)"></div>
+    <div class="petalo" style="transform:rotate(240deg)"></div>
+    <div class="petalo" style="transform:rotate(300deg)"></div>
+    <div class="centro"></div>
+</div>
+
+<div class="flor" style="top:30%; right:15%; animation-delay:2s;">
+    <div class="petalo" style="transform:rotate(0deg)"></div>
+    <div class="petalo" style="transform:rotate(60deg)"></div>
+    <div class="petalo" style="transform:rotate(120deg)"></div>
+    <div class="petalo" style="transform:rotate(180deg)"></div>
+    <div class="petalo" style="transform:rotate(240deg)"></div>
+    <div class="petalo" style="transform:rotate(300deg)"></div>
+    <div class="centro"></div>
+</div>
+
+<!-- Mensaje animado -->
+<div class="mensaje" id="mensaje"></div>
+
+<script>
+const texto = "Te amo con toda mi alma y mi corazón";
+const contenedor = document.getElementById("mensaje");
+
+texto.split("").forEach((letra, i) => {
+    const span = document.createElement("span");
+    span.textContent = letra;
+    span.className = "letra";
+    span.style.animationDelay = (i * 0.08) + "s";
+    contenedor.appendChild(span);
+});
+</script>
+
+</body>
+</html>
