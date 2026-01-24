@@ -17,6 +17,22 @@ body {
     align-items: center;
 }
 
+/* Bruma verde inferior */
+.suelo {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: radial-gradient(circle at bottom, rgba(120,255,160,0.25), transparent);
+    animation: respirar 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes respirar {
+    0%,100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
 /* Carta */
 .carta {
     background: rgba(0,0,0,0.5);
@@ -26,12 +42,28 @@ body {
     box-shadow: 0 0 30px rgba(255,182,193,0.3);
     font-size: 20px;
     line-height: 1.6;
-    z-index: 2;
+    z-index: 3;
 }
 
 /* Texto */
 #texto {
     white-space: pre-wrap;
+}
+
+/* Flores laterales */
+.flor {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffd1dc, #ff69b4);
+    animation: flotar 4s ease-in-out infinite;
+    opacity: 0.9;
+}
+
+@keyframes flotar {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
 }
 
 /* Pétalos */
@@ -55,17 +87,34 @@ body {
         opacity: 1;
     }
 }
+
+/* Destellos */
+.luz {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    animation: brillar 3s ease-in-out infinite;
+}
+
+@keyframes brillar {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
 </style>
 </head>
 
 <body>
+
+<div class="suelo"></div>
 
 <div class="carta">
     <div id="texto"></div>
 </div>
 
 <script>
-/* TEXTO DE LA CARTA */
+/* TEXTO (NO TOCAR SI YA TE GUSTA) */
 const carta = `
 Alice,
 
@@ -76,13 +125,13 @@ y mis sonrisas.
 
 y se que aun que, estemos tan lejos
 yo te amo de una manera inexplicable
-te amo demasiado
+te amo demasiado,
 aun que, no tengamos tantos meses,
-yo te amo cada dia mucho mas
-siempre te amare mi otaku,
-te amo mi amor.
+yo te amo cada dia mucho mass amor
+siempre te amare mi otaku hemosha,
+te amo mi amor, t amoo amor
 
-Yyy solo quiero que sepas algo simple,
+Hoy solo quiero que sepas algo simple,
 pero verdadero:
 
 Te amo con toda mi alma
@@ -91,9 +140,8 @@ y con todo mi corazón.
 Siempre.
 `;
 
-/* Efecto de escritura */
 let i = 0;
-const velocidad = 50;
+const velocidad = 60;
 const contenedor = document.getElementById("texto");
 
 function escribir() {
@@ -103,17 +151,39 @@ function escribir() {
         setTimeout(escribir, velocidad);
     }
 }
-
 escribir();
 
-/* Lluvia de pétalos */
-for (let i = 0; i < 50; i++) {
+/* Pétalos */
+for (let i = 0; i < 70; i++) {
     const p = document.createElement("div");
     p.className = "petalo";
     p.style.left = Math.random() * 100 + "vw";
     p.style.animationDuration = (6 + Math.random() * 6) + "s";
     p.style.animationDelay = Math.random() * 5 + "s";
     document.body.appendChild(p);
+}
+
+/* Flores laterales */
+for (let i = 0; i < 10; i++) {
+    const f = document.createElement("div");
+    f.className = "flor";
+    f.style.left = "20px";
+    f.style.top = (i * 10 + 10) + "vh";
+    document.body.appendChild(f);
+
+    const f2 = f.cloneNode();
+    f2.style.left = "calc(100% - 60px)";
+    document.body.appendChild(f2);
+}
+
+/* Destellos */
+for (let i = 0; i < 25; i++) {
+    const l = document.createElement("div");
+    l.className = "luz";
+    l.style.left = Math.random() * 100 + "vw";
+    l.style.top = Math.random() * 100 + "vh";
+    l.style.animationDelay = Math.random() * 3 + "s";
+    document.body.appendChild(l);
 }
 </script>
 
