@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Alice 💌</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #1f0033, #000);
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+    color: #ffe6f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Carta */
+.carta {
+    background: rgba(0,0,0,0.5);
+    padding: 40px;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,182,193,0.3);
+    font-size: 20px;
+    line-height: 1.6;
+    z-index: 2;
+}
+
+/* Texto */
+#texto {
+    white-space: pre-wrap;
+}
+
+/* Pétalos */
+.petalo {
+    position: absolute;
+    width: 18px;
+    height: 28px;
+    background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    from {
+        transform: translateY(-40px) rotate(0deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+    <div id="texto"></div>
+</div>
+
+<script>
+/* TEXTO DE LA CARTA */
+const carta = `
+Alice,
+
+No sé en qué momento exacto pasó,
+pero poco a poco empezaste a habitar
+mis pensamientos, mis silencios
+y mis sonrisas.
+
+y se que aun que, estemos tan lejos
+yo te amo de una manera inexplicable
+te amo demasiado
+aun que, no tengamos tantos meses,
+yo te amo cada dia mucho mas
+siempre te amare mi otaku,
+te amo mi amor.
+
+Yyy solo quiero que sepas algo simple,
+pero verdadero:
+
+Te amo con toda mi alma
+y con todo mi corazón.
+
+Siempre.
+`;
+
+/* Efecto de escritura */
+let i = 0;
+const velocidad = 50;
+const contenedor = document.getElementById("texto");
+
+function escribir() {
+    if (i < carta.length) {
+        contenedor.textContent += carta.charAt(i);
+        i++;
+        setTimeout(escribir, velocidad);
+    }
+}
+
+escribir();
+
+/* Lluvia de pétalos */
+for (let i = 0; i < 50; i++) {
+    const p = document.createElement("div");
+    p.className = "petalo";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (6 + Math.random() * 6) + "s";
+    p.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
