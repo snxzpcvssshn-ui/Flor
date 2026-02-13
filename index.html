@@ -2,58 +2,162 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Una flor para ti 🌸</title>
+<title>Para ti 💖</title>
+
 <style>
-    body {
-        margin: 0;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-        color: white;
-        font-family: Arial;
-    }
 
-    .flor {
-        width: 200px;
-        height: 200px;
-        position: relative;
-        animation: girar 12s linear infinite;
-    }
+body{
+    margin:0;
+    height:100vh;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow:hidden;
+}
 
-    .petalo {
-        width: 80px;
-        height: 120px;
-        background: pink;
-        border-radius: 50%;
-        position: absolute;
-        top: 40px;
-        left: 60px;
-        transform-origin: bottom center;
-        opacity: 0.9;
-    }
+.contenedor{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+    position:relative;
+}
 
-    @keyframes girar {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+h1{
+    color:#ff4d6d;
+}
+
+p{
+    font-size:18px;
+    color:#444;
+}
+
+button{
+    padding:12px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    margin:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#si{
+    background:#ff4d6d;
+    color:white;
+}
+
+#si:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    background:#ccc;
+    position:absolute;
+}
+
+/* corazones */
+.corazon{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation: caer 5s linear infinite;
+}
+
+@keyframes caer{
+    0%{
+        transform:translateY(-10px);
+        opacity:1;
     }
+    100%{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+
 </style>
 </head>
 
 <body>
-    <div class="flor">
-        <div class="petalo" style="transform: rotate(0deg)"></div>
-        <div class="petalo" style="transform: rotate(45deg)"></div>
-        <div class="petalo" style="transform: rotate(90deg)"></div>
-        <div class="petalo" style="transform: rotate(135deg)"></div>
-        <div class="petalo" style="transform: rotate(180deg)"></div>
-        <div class="petalo" style="transform: rotate(225deg)"></div>
-        <div class="petalo" style="transform: rotate(270deg)"></div>
-        <div class="petalo" style="transform: rotate(315deg)"></div>
-    </div>
 
-    <h2>Para alguien especial 🌸</h2>
+<div class="contenedor" id="pantalla">
+    <h1>Tengo algo muy importante que preguntarte 💕</h1>
+    
+    <p>
+        Desde que llegaste a mi vida todo se volvió más bonito.
+        Me haces sonreír incluso en los días difíciles,
+        y haces que mi corazón lata más rápido cada vez que pienso en ti.
+    </p>
+
+    <h2>¿Quieres ser mi San Valentín? 🌹</h2>
+
+    <button id="si" onclick="aceptar()">Sí 💖</button>
+    <button id="no" onmouseover="mover()">No 😢</button>
+</div>
+
+<script>
+
+function aceptar(){
+
+    document.body.innerHTML = `
+    <div style="color:white; text-align:center; padding:40px;">
+    
+    <h1 style="font-size:50px;">💖 TE AMO MUCHÍSIMO 💖</h1>
+
+    <p style="font-size:22px; max-width:700px; margin:auto;">
+    Prometo cuidarte, hacerte sonreír, acompañarte en tus días felices
+    y abrazarte (cuando estemos juntos oc?) en los días difíciles.
+
+    Eres una persona increíble, hermosa y especial para mí UwU.
+    Gracias por existir, gracias por elegirme,
+    y gracias por permitirme ser parte de tu vida.
+
+    Hoy, mañana y siempre quiero seguir creando recuerdos contigo.
+    Eres mi lugar favorito en el mundo 
+    (aunq estemos tan lejos yo te amo muchisimo miamor hermosha)
+    </p>
+
+    <h2>✨ Feliz San Valentín ✨</h2>
+
+    </div>
+    `;
+
+    lluviaCorazones();
+}
+
+function mover(){
+    let boton = document.getElementById("no");
+
+    let x = Math.random() * 300;
+    let y = Math.random() * 200;
+
+    boton.style.left = x + "px";
+    boton.style.top = y + "px";
+}
+
+function lluviaCorazones(){
+
+    setInterval(()=>{
+        let corazon = document.createElement("div");
+        corazon.innerHTML = "💖";
+        corazon.classList.add("corazon");
+
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.fontSize = (Math.random()*20+20) + "px";
+
+        document.body.appendChild(corazon);
+
+        setTimeout(()=>{
+            corazon.remove();
+        },5000);
+
+    },300);
+}
+
+</script>
+
 </body>
 </html>
