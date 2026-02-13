@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para ti 💖</title>
+<title>Para Ti alish 💖</title>
 
 <style>
 
@@ -10,31 +10,46 @@ body{
     margin:0;
     height:100vh;
     background:
-        linear-gradient(rgba(255,118,148,0.5), rgba(255,118,148,0.5)),
-        url("https://i.imgur.com/9a8YwFQ.jpg");
-
-    background-size: cover;
-    background-position: center;
+    linear-gradient(rgba(255,118,148,0.6), rgba(255,118,148,0.6)),
+    url("https://i.imgur.com/Zs6X9qD.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow:hidden;
 }
 
+/* tarjeta */
 .contenedor{
-    background:white;
+    background:rgba(255,255,255,0.95);
     padding:40px;
     border-radius:25px;
     text-align:center;
-    box-shadow:0 0 25px rgba(0,0,0,0.3);
+    box-shadow:0 0 40px rgba(0,0,0,0.3);
     position:relative;
+    max-width:600px;
+    animation: aparecer 2s ease;
+}
+
+@keyframes aparecer{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
 }
 
 h1{
     color:#ff4d6d;
+    font-size:35px;
 }
 
 p{
     font-size:18px;
     color:#444;
+    line-height:1.6;
 }
 
+/* botones */
 button{
     padding:12px 28px;
     font-size:18px;
@@ -51,7 +66,8 @@ button{
 }
 
 #si:hover{
-    transform:scale(1.1);
+    transform:scale(1.15);
+    box-shadow:0 0 15px #ff4d6d;
 }
 
 #no{
@@ -59,23 +75,40 @@ button{
     position:absolute;
 }
 
-/* corazones */
+/* corazones cayendo */
 .corazon{
     position:fixed;
     top:-10px;
-    font-size:20px;
-    animation: caer 5s linear infinite;
+    animation: caer 6s linear infinite;
 }
 
 @keyframes caer{
-    0%{
-        transform:translateY(-10px);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(110vh);
-        opacity:0;
-    }
+    0%{transform:translateY(-10px); opacity:1;}
+    100%{transform:translateY(110vh); opacity:0;}
+}
+
+/* pétalos */
+.petalo{
+    position:fixed;
+    top:-10px;
+    animation: caerPetalos 8s linear infinite;
+}
+
+@keyframes caerPetalos{
+    0%{transform:translateY(-10px) rotate(0deg);}
+    100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* brillo */
+.brillo{
+    position:fixed;
+    font-size:20px;
+    animation: brillo 3s infinite alternate;
+}
+
+@keyframes brillo{
+    from{opacity:0.3;}
+    to{opacity:1;}
 }
 
 </style>
@@ -84,77 +117,105 @@ button{
 <body>
 
 <div class="contenedor" id="pantalla">
-    <h1>Tengo algo muy importante que preguntarte 💕</h1>
-    
-    <p>
-        Desde que llegaste a mi vida todo se volvió más bonito.
-        Me haces sonreír incluso en los días difíciles,
-        y haces que mi corazón lata más rápido cada vez que pienso en ti.
-    </p>
 
-    <h2>¿Quieres ser mi San Valentín? 🌹</h2>
+<h1>Tengo algo muy importante que preguntarte 💕</h1>
 
-    <button id="si" onclick="aceptar()">Sí 💖</button>
-    <button id="no" onmouseover="mover()">No 😢</button>
+<p>
+Desde que llegaste a mi vida todo se volvió más bonito.<br>
+Me haces sonreír incluso en los días difíciles,<br>
+y haces que mi corazón lata más rápido cada vez que pienso en ti.
+</p>
+
+<p>
+Eres una persona maravillosa, llena de luz, ternura y amor.
+Cada momento contigo es especial y quiero seguir construyendo recuerdos a tu lado.
+</p>
+
+<h2>¿Quieres ser mi San Valentín? 🌹</h2>
+
+<button id="si" onclick="aceptar()">Sí 💖</button>
+<button id="no" onmouseover="mover()">No 😢</button>
+
 </div>
 
 <script>
 
 function aceptar(){
 
-    document.body.innerHTML = `
-    <div style="color:white; text-align:center; padding:40px;">
-    
-    <h1 style="font-size:50px;">💖 TE AMO MUCHÍSIMO 💖</h1>
+document.body.innerHTML = `
+<div style="color:white; text-align:center; padding:40px; max-width:700px; margin:auto;">
 
-    <p style="font-size:22px; max-width:700px; margin:auto;">
-    Prometo cuidarte, hacerte sonreír, acompañarte en tus días felices
-    y abrazarte (cuando estemos juntos oc?) en los días difíciles.
+<h1 style="font-size:50px;">💖 TE AMO MUCHÍSIMO MIAMOR💖</h1>
 
-    Eres una persona increíble, hermosa y especial para mí UwU.
-    Gracias por existir, gracias por elegirme,
-    y gracias por permitirme ser parte de tu vida.
+<p style="font-size:22px;">
+Prometo cuidarte, respetarte y hacerte feliz cada día :3.<br><br>
 
-    Hoy, mañana y siempre quiero seguir creando recuerdos contigo.
-    Eres mi lugar favorito en el mundo 
-    (aunq estemos tan lejos yo te amo muchisimo miamor hermosha)
-    </p>
+Quiero abrazarte cuando estés triste (cuando estemos lejos oc),<br>
+reír contigo cuando estés feliz,<br>
+y acompañarte en cada paso de tu vida.<br><br>
 
-    <h2>✨ Feliz San Valentín ✨</h2>
+Eres una persona increíble, hermosa y especial para mí.<br>
+Gracias por existir, gracias por elegirme,<br>
+y gracias por permitirme amarte mi miause hemosha.<br><br>
 
-    </div>
-    `;
+Hoy, mañana y siempre quiero seguir creando recuerdos contigo.<br>
+Eres mi lugar favorito en el mundo (aunq estemos lejos :c)
+</p>
 
-    lluviaCorazones();
+<h2>✨ Feliz San Valentín ✨</h2>
+
+</div>
+`;
+
+lluviaCorazones();
+lluviaPetalos();
+brillos();
+
 }
 
 function mover(){
-    let boton = document.getElementById("no");
-
-    let x = Math.random() * 300;
-    let y = Math.random() * 200;
-
-    boton.style.left = x + "px";
-    boton.style.top = y + "px";
+let boton = document.getElementById("no");
+boton.style.left = Math.random()*300 + "px";
+boton.style.top = Math.random()*200 + "px";
 }
 
 function lluviaCorazones(){
+setInterval(()=>{
+let corazon = document.createElement("div");
+corazon.innerHTML="💖";
+corazon.classList.add("corazon");
+corazon.style.left=Math.random()*100+"vw";
+corazon.style.fontSize=(Math.random()*25+20)+"px";
+document.body.appendChild(corazon);
 
-    setInterval(()=>{
-        let corazon = document.createElement("div");
-        corazon.innerHTML = "💖";
-        corazon.classList.add("corazon");
+setTimeout(()=>{corazon.remove();},6000);
+},300);
+}
 
-        corazon.style.left = Math.random() * 100 + "vw";
-        corazon.style.fontSize = (Math.random()*20+20) + "px";
+function lluviaPetalos(){
+setInterval(()=>{
+let petalo = document.createElement("div");
+petalo.innerHTML="🌹";
+petalo.classList.add("petalo");
+petalo.style.left=Math.random()*100+"vw";
+petalo.style.fontSize=(Math.random()*20+20)+"px";
+document.body.appendChild(petalo);
 
-        document.body.appendChild(corazon);
+setTimeout(()=>{petalo.remove();},8000);
+},700);
+}
 
-        setTimeout(()=>{
-            corazon.remove();
-        },5000);
+function brillos(){
+setInterval(()=>{
+let brillo = document.createElement("div");
+brillo.innerHTML="✨";
+brillo.classList.add("brillo");
+brillo.style.left=Math.random()*100+"vw";
+brillo.style.top=Math.random()*100+"vh";
+document.body.appendChild(brillo);
 
-    },300);
+setTimeout(()=>{brillo.remove();},3000);
+},1000);
 }
 
 </script>
